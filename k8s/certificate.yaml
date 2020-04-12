@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Cerificate
+metadata:
+    name: k8s-multi-com-tls
+spec:
+    secretName: k8s-multi-com
+    issuerRef:
+        name: letsencrypt-prod
+        kind: ClusterIssuer
+    commonName: avarzaerp.dev
+    dnsNames:
+        - avarzaerp.dev
+        - www.avarzaerp.dev
+    acme:
+        config:
+            - http01:
+                ingressClass: nginx
+            domains:
+                - avarzaerp.dev
+                - www.avarzaerp.dev
